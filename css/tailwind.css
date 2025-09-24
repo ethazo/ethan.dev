@@ -4,58 +4,46 @@
 @source '../node_modules/pliny';
 @custom-variant dark (&:where(.dark, .dark *));
 
-/* Core theme configuration */
+
+/* =======================
+   核心主题变量
+======================= */
 @theme {
-  /* Font families */
-  --font-sans: var(--font-space-grotesk), ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji',
-    'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
-
-  /* Colors */
-  /* Copied from https://tailwindcss.com/docs/theme#default-theme-variable-reference */
-  --color-primary-50: oklch(0.971 0.014 343.198);
-  --color-primary-100: oklch(0.948 0.028 342.258);
-  --color-primary-200: oklch(0.899 0.061 343.231);
-  --color-primary-300: oklch(0.823 0.12 346.018);
-  --color-primary-400: oklch(0.718 0.202 349.761);
-  --color-primary-500: oklch(0.656 0.241 354.308);
-  --color-primary-600: oklch(0.592 0.249 0.584);
-  --color-primary-700: oklch(0.525 0.223 3.958);
-  --color-primary-800: oklch(0.459 0.187 3.815);
-  --color-primary-900: oklch(0.408 0.153 2.432);
-  --color-primary-950: oklch(0.284 0.109 3.907);
-
-  --color-gray-50: oklch(0.985 0.002 247.839);
-  --color-gray-100: oklch(0.967 0.003 264.542);
-  --color-gray-200: oklch(0.928 0.006 264.531);
-  --color-gray-300: oklch(0.872 0.01 258.338);
-  --color-gray-400: oklch(0.707 0.022 261.325);
-  --color-gray-500: oklch(0.551 0.027 264.364);
-  --color-gray-600: oklch(0.446 0.03 256.802);
-  --color-gray-700: oklch(0.373 0.034 259.733);
-  --color-gray-800: oklch(0.278 0.033 256.848);
-  --color-gray-900: oklch(0.21 0.034 264.665);
-  --color-gray-950: oklch(0.13 0.028 261.692);
-
-  /* Line heights */
+  --font-sans: 'Outfit', ui-sans-serif, system-ui, sans-serif;
   --line-height-11: 2.75rem;
   --line-height-12: 3rem;
   --line-height-13: 3.25rem;
   --line-height-14: 3.5rem;
 
-  /* Z-index values */
+  /* Primary colors */
+  --color-primary-400: #7aa2f7;
+  --color-primary-500: #7aa2f7;
+  --color-primary-600: #7aa2f7;
+
+  /* Gray colors */
+  --color-gray-50: #f9fafb;
+  --color-gray-100: #f3f4f6;
+  --color-gray-200: #e5e7eb;
+  --color-gray-300: #d1d5db;
+  --color-gray-400: #9ca3af;
+  --color-gray-500: #6b7280;
+  --color-gray-600: #4b5563;
+  --color-gray-700: #374151;
+  --color-gray-800: #1f2937;
+  --color-gray-900: #111827;
+
+  --color-dark: #1a1b26;
+  --color-spotify: #1db954;
+  --color-coral: #ef596f;
+
   --z-60: 60;
   --z-70: 70;
   --z-80: 80;
 }
 
-/*
-  The default border color has changed to `currentColor` in Tailwind CSS v4,
-  so we've added these compatibility styles to make sure everything still
-  looks the same as it did with Tailwind CSS v3.
-
-  If we ever want to remove these styles, we need to add an explicit border
-  color utility to any element that depends on these defaults.
-*/
+/* =======================
+   Base 样式
+======================= */
 @layer base {
   *,
   ::after,
@@ -73,12 +61,16 @@
   a:focus-visible,
   button:focus-visible {
     outline: 2px solid;
-    border-radius: var(--radius-sm);
+    border-radius: 0.25rem;
     outline-color: var(--color-primary-500);
   }
 }
 
+/* =======================
+   Utilities 样式
+======================= */
 @layer utilities {
+  /* Typography */
   .prose {
     & a {
       color: var(--color-primary-500);
@@ -91,13 +83,13 @@
     }
     & :where(h1, h2) {
       font-weight: 700;
-      letter-spacing: var(--tracking-tight);
+      letter-spacing: -0.025em;
     }
     & h3 {
       font-weight: 600;
     }
     & :where(code):not(pre code) {
-      color: var(--color-indigo-500);
+      color: #6366f1;
     }
   }
 
@@ -115,61 +107,254 @@
       color: var(--color-gray-100);
     }
   }
-}
 
-.task-list-item::before {
-  @apply hidden;
-}
+  /* START: CSS popular tags */
+  .popular-tags .javascript {
+    @apply bg-amber-400;
+  }
 
-.task-list-item {
-  @apply list-none;
-}
+  .popular-tags .typescript {
+    @apply bg-blue-500;
+  }
 
-.footnotes {
-  @apply mt-12 border-t border-gray-200 pt-8 dark:border-gray-700;
-}
+  .popular-tags .nestjs {
+    @apply bg-rose-500;
+  }
 
-.data-footnote-backref {
-  @apply no-underline;
-}
+  .popular-tags .react {
+    @apply bg-sky-500;
+  }
 
-.csl-entry {
-  @apply my-5;
-}
+  .popular-tags .devops {
+    @apply bg-sky-600;
+  }
 
-.no-scrollbar::-webkit-scrollbar {
-  display: none;
-}
+  .popular-tags .database {
+    @apply bg-green-900;
+  }
+  /* END: CSS popular tags */
 
-.no-scrollbar {
-  -ms-overflow-style: none; /* IE and Edge */
-  scrollbar-width: none; /* Firefox */
-}
+  /* Task list / footnotes */
+  .task-list-item::before {
+    @apply hidden;
+  }
+  .task-list-item {
+    @apply list-none;
+  }
+  .footnotes {
+    @apply mt-12 border-t border-gray-200 pt-8 dark:border-gray-700;
+  }
+  .data-footnote-backref {
+    @apply no-underline;
+  }
+  .csl-entry {
+    @apply my-5;
+  }
 
-/* https://stackoverflow.com/questions/61083813/how-to-avoid-internal-autofill-selected-style-to-be-applied */
-input:-webkit-autofill,
-input:-webkit-autofill:focus {
-  transition:
-    background-color 600000s 0s,
-    color 600000s 0s;
-}
+  /* Scrollbar */
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+  .no-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
 
-.katex-display {
-  overflow: auto hidden;
-}
+  /* Autofill */
+  input:-webkit-autofill,
+  input:-webkit-autofill:focus {
+    transition:
+      background-color 600000s 0s,
+      color 600000s 0s;
+  }
 
-.content-header-link {
-  opacity: 0;
-  margin-left: -24px;
-  padding-right: 4px;
-}
+  /* KaTeX */
+  .katex-display {
+    overflow: auto hidden;
+  }
 
-.content-header:hover .content-header-link,
-.content-header-link:hover {
-  opacity: 1;
-}
+  /* Content header link */
+  .content-header-link {
+    opacity: 0;
+    margin-left: -24px;
+    padding-right: 4px;
+  }
+  .content-header:hover .content-header-link,
+  .content-header-link:hover {
+    opacity: 1;
+  }
 
-.linkicon {
-  display: inline-block;
-  vertical-align: middle;
+  .linkicon {
+    display: inline-block;
+    vertical-align: middle;
+  }
+
+  /* =======================
+     Animations
+  ======================== */
+  @keyframes wave-animation {
+    0% {
+      transform: rotate(0deg);
+    }
+    10% {
+      transform: rotate(14deg);
+    }
+    20% {
+      transform: rotate(-8deg);
+    }
+    30% {
+      transform: rotate(14deg);
+    }
+    40% {
+      transform: rotate(-4deg);
+    }
+    50% {
+      transform: rotate(10deg);
+    }
+    60% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(0deg);
+    }
+  }
+  .animate-wave {
+    animation: wave-animation 2.5s linear infinite;
+  }
+
+  @keyframes music-bar-1 {
+    0%,
+    100% {
+      height: 0%;
+    }
+    50% {
+      height: 70%;
+    }
+  }
+  @keyframes music-bar-2 {
+    0%,
+    100% {
+      height: 50%;
+    }
+    25% {
+      height: 0%;
+    }
+    75% {
+      height: 100%;
+    }
+  }
+  @keyframes music-bar-3 {
+    0%,
+    100% {
+      height: 70%;
+    }
+    15% {
+      height: 100%;
+    }
+    65% {
+      height: 0%;
+    }
+  }
+  @keyframes music-bar-4 {
+    0%,
+    100% {
+      height: 50%;
+    }
+    35.7% {
+      height: 0%;
+    }
+    85.7% {
+      height: 70%;
+    }
+  }
+  @keyframes scale-up {
+    0% {
+      transform: scale(1);
+    }
+    50% {
+      transform: scale(1.18);
+    }
+    100% {
+      transform: scale(1);
+    }
+  }
+
+  .animate-music-bar-1 {
+    animation: music-bar-1 0.8s linear infinite;
+  }
+  .animate-music-bar-2 {
+    animation: music-bar-2 0.8s linear infinite;
+  }
+  .animate-music-bar-3 {
+    animation: music-bar-3 0.8s linear infinite;
+  }
+  .animate-music-bar-4 {
+    animation: music-bar-4 0.8s linear infinite;
+  }
+  .animate-scale-up {
+    animation: scale-up 150ms ease-in-out forwards;
+  }
+
+  /* Box shadow */
+  .shadow-nextjs {
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
+  }
+  .shadow-nextjs-dark {
+    box-shadow: 0 8px 20px rgba(255, 255, 255, 0.12);
+  }
+
+  /* Spacing */
+  .aspect-9\/16 {
+    padding-top: 56.25%;
+  }
+
+  /* Line height */
+  .leading-11 {
+    line-height: 2.75rem;
+  }
+  .leading-12 {
+    line-height: 3rem;
+  }
+  .leading-13 {
+    line-height: 3.25rem;
+  }
+  .leading-14 {
+    line-height: 3.5rem;
+  }
+
+  /* Font family */
+  .font-sans {
+    font-family: var(--font-sans);
+  }
+
+  /* Colors */
+  .text-primary-400 {
+    color: var(--color-primary-400);
+  }
+  .text-primary-500 {
+    color: var(--color-primary-500);
+  }
+  .text-primary-600 {
+    color: var(--color-primary-600);
+  }
+  .bg-dark {
+    background-color: var(--color-dark);
+  }
+  .text-spotify {
+    color: var(--color-spotify);
+  }
+  .text-coral {
+    color: var(--color-coral);
+  }
+
+  /* Z-index */
+  .z-60 {
+    z-index: 60;
+  }
+  .z-70 {
+    z-index: 70;
+  }
+  .z-80 {
+    z-index: 80;
+  }
 }

@@ -12,9 +12,9 @@ const compat = new FlatCompat({
   baseDirectory: __dirname,
 })
 
-export default [
+const eslintConfig = [
   {
-    ignores: [],
+    ignores: ['tailwind.config.js'],
   },
   js.configs.recommended,
   ...compat.extends(
@@ -68,3 +68,5 @@ export default [
     },
   },
 ]
+
+export default eslintConfig
