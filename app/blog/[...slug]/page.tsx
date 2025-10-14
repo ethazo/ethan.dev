@@ -1,18 +1,16 @@
 import 'css/prism.css'
 import 'katex/dist/katex.css'
 
-import PageTitle from '@/components/PageTitle'
-import { components } from '@/components/MDXComponents'
-import { MDXLayoutRenderer } from 'pliny/mdx-components'
-import { sortPosts, coreContent, allCoreContent } from 'pliny/utils/contentlayer'
-import { allBlogs, allAuthors } from 'contentlayer/generated'
-import type { Authors, Blog } from 'contentlayer/generated'
-import PostSimple from '@/layouts/PostSimple'
-import PostLayout from '@/layouts/PostLayout'
-import PostBanner from '@/layouts/PostBanner'
 import { Metadata } from 'next'
-import siteMetadata from '@/data/siteMetadata'
 import { notFound } from 'next/navigation'
+import { MDXLayoutRenderer } from 'pliny/mdx-components'
+import type { Authors, Blog } from 'contentlayer/generated'
+import { allBlogs, allAuthors } from 'contentlayer/generated'
+import { sortPosts, coreContent, allCoreContent } from 'pliny/utils/contentlayer'
+
+import { components } from '@/components/ui'
+import siteMetadata from '@/data/siteMetadata'
+import { PostSimple, PostLayout, PostBanner } from 'layouts'
 
 const defaultLayout = 'PostLayout'
 const layouts = {
@@ -45,7 +43,7 @@ export async function generateMetadata(props: {
   }
   const ogImages = imageList.map((img) => {
     return {
-      url: img && img.includes('http') ? img : siteMetadata.siteUrl + img,
+      url: img.includes('http') ? img : siteMetadata.siteUrl + img,
     }
   })
 

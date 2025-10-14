@@ -2,12 +2,12 @@ import TimelineItem from './TimelineItem'
 
 export const EXPERIENCES = [
   {
-    org: 'Younet Media',
+    org: 'Shanghai Ugion Technology',
     url: 'https://younetmedia.com',
-    logo: '/static/images/experiences/younetmedia-logo.png',
-    start: 'Mar 2022',
+    logo: '/static/images/experiences/ugion-logo.png',
+    start: 'March 2024',
     end: 'Present',
-    title: 'Junior Software Engineer',
+    title: 'Frontend Developer',
     icon: 'man-technologist',
     event: 'career-younetmedia',
     details: () => {
@@ -31,12 +31,12 @@ export const EXPERIENCES = [
     },
   },
   {
-    org: 'QKIT Software',
-    url: 'https://qkit.vn',
-    logo: '/static/images/experiences/qkit-logo.png',
-    start: 'Jan 2021',
-    end: 'Dec 2022',
-    title: 'Fresher Backend Developer',
+    org: 'Yonyou Auto Information Technology ',
+    url: 'https://www.yonyouqiche.com/',
+    logo: '/static/images/experiences/yonyou-logo.png',
+    start: 'July 2022',
+    end: 'July 2020',
+    title: 'Frontend Developer',
     icon: 'man-technologist',
     event: 'career-qkit',
     details: () => {
@@ -58,12 +58,12 @@ export const EXPERIENCES = [
     },
   },
   {
-    org: 'University of Information Technology',
-    url: 'https://en.uit.edu.vn',
+    org: 'Nanjing Audit University Jinshen College',
+    url: 'https://lxsy.nau.edu.cn/NanjingAuditUniversity/list.htm',
     logo: '/static/images/experiences/uit-logo.png',
-    start: 'Aug 2019',
-    end: 'Jun 2023',
-    title: 'Student ad UIT - HCMC (School of Computer Science)',
+    start: 'Dec 2015',
+    end: 'Dec 2019',
+    title: 'Student',
     icon: 'man-technologist',
     event: 'career-qkit',
     details: () => {

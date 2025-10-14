@@ -55,16 +55,15 @@ export default function AuthorLayout({ children, content }: Props) {
             </div>
           </div>
 
-          {/* <div className="prose max-w-none pb-8 dark:prose-dark xl:col-span-2">{children}</div> */}
+          {/* <div className="prose max-w-none pb-8 dark:prose-invert xl:col-span-2">{children}</div> */}
 
-          <div className="prose dark:prose-dark max-w-none pb-8 xl:col-span-2">
+          <div className="prose dark:prose-invert max-w-none pb-8 xl:col-span-2">
             <h2>
-              Hello, folks! <Twemoji className="mx-2" emoji="waving-hand" /> I'm Trong Khanh (aka
-              Karhdo)
+              Hello, folks! <Twemoji className="mx-2" emoji="waving-hand" /> I'm Ethan
             </h2>
             <p>
               I have a passion for <strong>JavaScript/TypeScript</strong> and website development.
-              I'm currently a fullstack developer at <strong>YouNet Media</strong>, deeply engaged
+              I'm currently a fullstack developer at <strong>Suzhou, China</strong>, deeply engaged
               in the <strong>EcomHeat</strong> project, which entails market share management,
               competitor research, and fostering e-commerce growth. I work mainly with{' '}
               <strong>JavaScript</strong>, <strong>TypeScript</strong>, <strong>React</strong>,{' '}
@@ -168,7 +167,7 @@ export default function AuthorLayout({ children, content }: Props) {
 
             <p>
               See my{' '}
-              <a target="_blank" href="https://github.com/Karhdo/karhdo.dev">
+              <a target="_blank" href="https://github.com/ethazo/ethan.dev">
                 repository
               </a>{' '}
               for this blog.

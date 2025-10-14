@@ -26,7 +26,7 @@ const TypedBios = () => {
           I'm aliased as <b className="font-medium">Ethan</b> at work.
         </li>
         <li>
-          I live in <b className="font-medium">Suzhou, Jiangsu, China</b>.
+          I live in <b className="font-medium">Suzhou, China</b>.
         </li>
         <li>
           I was born in the beautiful <b className="font-medium">Suzhou</b> city.
