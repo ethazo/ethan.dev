@@ -91,7 +91,7 @@ const Reaction = (props: ReactionProps) => {
             reacting ? '-translate-y-6 opacity-0' : 'translate-y-0 opacity-100'
           )}
         >
-          {typeof value === 'string' ? '--' : value}
+          {typeof value === 'string' ? '--' : isNaN(Number(value)) ? 0 : value}
         </span>
         <span
           ref={countRef}
@@ -136,7 +136,12 @@ const Reactions = (props: ReactionsProps) => {
   }, [])
 
   const handleOnSave = (key: string) => {
-    updateReaction({ slug, type, [key]: stats[key] + reactions[key] - initialReactions[key] })
+    const currentStats = stats[key] || 0
+    const currentReactions = reactions[key] || 0
+    const initialReactionCount = initialReactions[key] || 0
+    const newValue = currentStats + currentReactions - initialReactionCount
+
+    updateReaction({ slug, type, [key]: newValue })
 
     localStorage.setItem(`${type}/slug`, JSON.stringify(reactions))
   }
@@ -147,8 +152,18 @@ const Reactions = (props: ReactionsProps) => {
         <Reaction
           key={key}
           emoji={emoji}
-          reactions={reactions[key]}
-          value={isLoading ? '--' : stats[key] + reactions[key] - initialReactions[key]}
+          reactions={reactions[key] || 0}
+          value={
+            isLoading
+              ? '--'
+              : (() => {
+                  const currentStats = stats[key] || 0
+                  const currentReactions = reactions[key] || 0
+                  const initialReactionCount = initialReactions[key] || 0
+                  const result = currentStats + currentReactions - initialReactionCount
+                  return isNaN(result) ? 0 : result
+                })()
+          }
           onSave={() => handleOnSave(key)}
           onReact={(value) => setReactions((reactions) => ({ ...reactions, [key]: value }))}
         />
